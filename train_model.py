@@ -71,7 +71,7 @@ X = pad_sequences(X, padding = "post", truncating = "post", maxlen = 25, value =
 y = pad_sequences(keyword_column, padding = "post", truncating = "post", maxlen = 25, value = 0)
 y = [to_categorical(i, num_classes = 2) for i in y]
 embeddings_index = {}
-f = open('data/e_dat.txt','r', encoding="utf8")
+f = open('data/glove.6B.100d.txt','r', encoding="utf8")
 for line in f:
 	values = line.split()
 	word = values[0]
