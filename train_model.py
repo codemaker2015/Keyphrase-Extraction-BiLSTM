@@ -117,7 +117,6 @@ try:
 		new_t = Tokenizer()
 		new_t.fit_on_texts([input_])
 		tokens = [i for i in new_t.word_index.keys()]
-#		print(tokens)
 		actual_tokens = new_t.texts_to_sequences([input_])
 		inv_map_tokens = {v: k for k, v in new_t.word_index.items()}
 		actual_tokens = [inv_map_tokens[i] for i in actual_tokens[0]]
@@ -130,8 +129,6 @@ try:
 		output_keywords = np.take(tokens, where_)
 		output_keywords = [i for i in output_keywords if i not in stop_words]
 		output_keywords = list(set(output_keywords))
-#		print(tokens)
-#		print(output)
 		print(output_keywords)
 except KeyboardInterrupt:
 	pass
