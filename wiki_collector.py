@@ -23,17 +23,18 @@ def key_word_extract(text):
 
 
 for i in range(40000):
-	fil = open('Wiki-keyword-data', 'a', encoding='utf8')
+	fil = open('Wiki-keyword-data.csv', 'a', encoding='utf8')
 	x = wptools.page(lang='en', silent=True)
 	title = str(x.data['title'])
 	
 	try:
 		pg = wikipedia.search(title)[0]
-		text = wikipedia.summary(pg, sentences=1)	
+		text = wikipedia.summary(pg, sentences=1)
+		text = text.replace(',', ' ')
 		data = key_word_extract(text)
 		print(data)
 		fil.write(data)
-		print()
+		# print()
 	
 	except:
 		fil.close()

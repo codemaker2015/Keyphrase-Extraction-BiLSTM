@@ -26,10 +26,12 @@ pd.set_option('display.max_rows', 500)
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
-df = pd.read_csv("data/wikidata.csv", delimiter = "	", names = ["Sentence", "Keyword"])
+df = pd.read_csv("Wiki-keyword-data.csv", delimiter = "\t", names = ["Sentence", "Keyword"])
 df['Sentence'] = df['Sentence'].astype(str)
 df['Keyword'] = df['Keyword'].astype(str)
 
+print(df['Sentence'])
+print(df['Keyword'])
 
 def hasNumbers(inputString):
 	return any(char.isdigit() for char in inputString)
@@ -40,9 +42,6 @@ def tag_keywords(all_keywords):
 	all_keywords = [i for i in tokenizer.word_index.keys()]
 	all_keywords = list(set(all_keywords))
 	return all_keywords
-
-df['Sentence'] = df['Sentence'].apply(lambda x: x.replace(" – TechCrunch",""))
-df['Keyword'] = df['Keyword'].apply(lambda x: tag_keywords(x))
 
 sentence_column = []
 keyword_column = []
